@@ -7,15 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   private title = 'atos';
-  counter = 0;
 
-  constructor() {
-    // setInterval(() => {
-    //   this.counter++;
-    // }, 2000);
-  }
-
-  increment() {
-    this.counter++;
-  }
 }
