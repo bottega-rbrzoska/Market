@@ -1,6 +1,21 @@
 <input class="form-control" type="text" #myInput>
-<button (click)="val = myInput.value">Click</button>
-
+<button (click)="val = myInput.value; isRed = !isRed"
+class="btn"
+[ngClass]="{'btn-danger': isRed}">Click</button>
+<div *ngIf="isRed">Button is red!</div>
 <app-test-child
-(uppercase)="handleUppercase()"
+(uppercase)="handleUppercase($event)"
 [textValue]="val"></app-test-child>
+<div>
+  <ul>
+    <li *ngFor="let num of numbers">{{num}}.</li>
+  </ul>
+</div>
+<table class="table">
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>({{i}}){{user.name}}</td>
+      <td>{{user.age}}</td>
+    </tr>
+  </tbody>
+</table>

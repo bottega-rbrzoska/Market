@@ -17,7 +17,7 @@ export class TestChildComponent implements OnInit {
     console.log(this.textValue);
   }
 
- sendUppercase() {
-   this.uppercase.emit(this.textValue.toUpperCase());
- }
+  sendUppercase() {
+    this.uppercase.emit(this.textValue.toUpperCase());
+  }
 }
