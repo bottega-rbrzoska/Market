@@ -12,6 +12,7 @@ import { TestComponent } from './test/test.component';
 import { TestChildComponent } from './test-child/test-child.component';
 import { TestPipe } from './test.pipe';
 import { TestService } from './test.service';
+import { ProductsService } from './products.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { TestService } from './test.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [TestService],
+  providers: [TestService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
