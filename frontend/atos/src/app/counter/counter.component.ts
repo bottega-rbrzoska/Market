@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -7,7 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CounterComponent implements OnInit {
 
+  @Input() maxValue = 10;
   @Input() initialValue = 1;
+  @Output() hasReachedMax = new EventEmitter();
   counter = 0;
 
   constructor() {
@@ -18,6 +20,9 @@ export class CounterComponent implements OnInit {
 
   increment() {
     this.counter++;
+    if (this.counter >= this.maxValue) {
+      this.hasReachedMax.emit();
+    }
   }
 
   ngOnInit() {
