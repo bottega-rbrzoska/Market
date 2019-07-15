@@ -10,9 +10,9 @@ export class AppComponent {
   counter = 0;
 
   constructor() {
-    setInterval(() => {
-      this.counter++;
-    }, 2000);
+    // setInterval(() => {
+    //   this.counter++;
+    // }, 2000);
   }
 
   increment() {
