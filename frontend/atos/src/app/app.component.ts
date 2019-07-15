@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'atos';
+  private title = 'atos';
+  counter = 0;
+
+  constructor() {
+    setInterval(() => {
+      this.counter++;
+    }, 2000);
+  }
+
+  increment() {
+    this.counter++;
+  }
 }
