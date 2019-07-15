@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { CounterComponent } from './counter/counter.component';
 import { TestComponent } from './test/test.component';
 import { TestChildComponent } from './test-child/test-child.component';
+import { TestPipe } from './test.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TestChildComponent } from './test-child/test-child.component';
     NavigationComponent,
     CounterComponent,
     TestComponent,
-    TestChildComponent
+    TestChildComponent,
+    TestPipe
   ],
   imports: [
     BrowserModule,

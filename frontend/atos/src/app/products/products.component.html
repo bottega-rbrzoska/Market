@@ -1,1 +1,21 @@
-<p>products works!</p>
+<table class="table">
+  <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.category}}</td>
+      <td>{{doubleVal(product.price)}}</td> <!-- NEVER K..wa żodnych funkcji na widokach!-->-->
+      <td>{{product.price | test:2}}</td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="false">Click</button>
