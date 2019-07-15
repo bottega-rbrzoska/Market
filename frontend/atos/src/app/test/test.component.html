@@ -1,4 +1,7 @@
-<input class="form-control" type="text" #myInput>
+<input class="form-control"
+type="text"
+(input)="censoredText = testService.censore(myInput.value)" #myInput>
+<div>Censored text: {{censoredText}}</div>
 <button (click)="val = myInput.value; isRed = !isRed"
 class="btn"
 [ngClass]="{'btn-danger': isRed}">Click</button>

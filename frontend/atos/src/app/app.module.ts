@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { TestComponent } from './test/test.component';
 import { TestChildComponent } from './test-child/test-child.component';
 import { TestPipe } from './test.pipe';
+import { TestService } from './test.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { TestPipe } from './test.pipe';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

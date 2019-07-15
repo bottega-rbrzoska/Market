@@ -13,8 +13,8 @@
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.category}}</td>
-      <td>{{doubleVal(product.price)}}</td> <!-- NEVER K..wa żodnych funkcji na widokach!-->-->
-      <td>{{product.price | test:2}}</td>
+      <td>{{doubleVal(product.price)}}</td> <!-- NEVER K..wa żodnych funkcji na widokach!-->
+      <td>{{product.price | test:2 | currency:'EUR'}}</td>
     </tr>
   </tbody>
 </table>
