@@ -22,4 +22,8 @@ export class ProductsComponent implements OnInit {
     console.log('calculate val: ' + val);
     return val * 2;
   }
+
+  filterProducts(name) {
+    this.products = this.productsService.getProducts(name);
+  }
 }
