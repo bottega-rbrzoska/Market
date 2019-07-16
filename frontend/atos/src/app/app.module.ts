@@ -13,6 +13,7 @@ import { TestChildComponent } from './test-child/test-child.component';
 import { TestPipe } from './test.pipe';
 import { TestService } from './test.service';
 import { ProductsService } from './products.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProductsService } from './products.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [TestService, ProductsService],
   bootstrap: [AppComponent]

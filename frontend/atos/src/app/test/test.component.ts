@@ -29,7 +29,9 @@ export class TestComponent implements OnInit {
     { age: 18, name: 'Alojzy'},
     { age: 21, name: 'Donald'}
   ];
+  categories$: Observable<string[]>;
   constructor(public testService: TestService) {
+    this.categories$ = testService.getCategories();
     this.mySubject.next('a');
     this.mySubject.next('b');
 

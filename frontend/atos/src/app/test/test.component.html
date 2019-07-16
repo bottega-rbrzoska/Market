@@ -22,3 +22,11 @@ class="btn"
     </tr>
   </tbody>
 </table>
+<ul>
+  <li *ngFor="let category of categories$ | async">{{category}}</li>
+</ul>
+<select>
+  <!--UWAGA: drugi async = drugi strzał do http-->
+  <option *ngFor="let category of categories$ | async"
+  [value]="category">{{category}}</option>
+</select>
