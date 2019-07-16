@@ -1,16 +1,30 @@
-Filter by category: <select type="text" #categorySelect
+Filter by category:
+<!-- <select class="form-control" #categorySelect
 (change)="filterProducts(categorySelect.value)">
 <option *ngFor="let cat of categories"
 [value]="cat">{{cat}}</option>
-</select>
+</select> -->
+<form [formGroup]="formGroup">
+  <select class="form-control" formControlName="categorySelect">
+    <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+  </select>
+</form>
+<div>
+  <div>Valid: {{formGroup.valid}}</div>
+  <div>Invalid: {{formGroup.invalid}}</div>
+  <div>Pristine: {{formGroup.pristine}}</div>
+  <div>Dirty: {{formGroup.dirty}}</div>
+  <div>Untouched: {{formGroup.untouched}}</div>
+  <div>Touched: {{formGroup.touched}}</div>
+</div>
 <table class="table">
   <thead>
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Actions</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,8 +32,9 @@ Filter by category: <select type="text" #categorySelect
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.category}}</td>
-      <td>{{doubleVal(product.price)}}</td> <!-- NEVER K..wa żodnych funkcji na widokach!-->
-      <td>{{product.price | test:2 | currency:'EUR'}}</td>
+      <!--<td>{{doubleVal(product.price)}}</td>  NEVER K..wa żodnych funkcji na widokach!-->
+      <td>{{product.price | currency:'EUR'}}</td>
+      <td></td>
     </tr>
   </tbody>
 </table>

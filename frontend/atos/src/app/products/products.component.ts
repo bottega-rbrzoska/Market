@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductsService } from '../products.service';
 import { Observable, Subscription } from 'rxjs';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -10,6 +11,9 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
 
+  formControl: FormControl;
+  formGroup: FormGroup;
+  formArray: FormArray;
   subscription: Subscription;
   categories = ['', 'Phones', 'Tablets', 'Notebooks'];
   products$: Observable<Product[]>;
@@ -17,6 +21,19 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService: ProductsService) {
     this.products$ = productsService.products$;
     productsService.refreshProducts();
+
+    // this.formControl = new FormControl('', Validators.required);
+    // this.formControl.valueChanges.subscribe(cat => {
+    //   this.filterProducts(cat);
+    // } );
+
+    this.formGroup = new FormGroup({
+      categorySelect: new FormControl('', Validators.required)
+    });
+    this.formGroup.valueChanges.subscribe(val => {
+      console.log(val);
+      this.filterProducts(val.categorySelect);
+    });
   }
 
   ngOnInit() {
