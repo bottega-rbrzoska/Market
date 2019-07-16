@@ -22,17 +22,17 @@ namespace Market.Infrastructure.Jobs
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Notifying users...");
-                using (var scope = _serviceProvider.CreateScope())
-                {
-                    var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-                    // ...
-                }
+            // while (!stoppingToken.IsCancellationRequested)
+            // {
+            //     _logger.LogInformation("Notifying users...");
+            //     using (var scope = _serviceProvider.CreateScope())
+            //     {
+            //         var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
+            //         // ...
+            //     }
 
-                await Task.Delay(5000, stoppingToken);
-            }
+            //     await Task.Delay(5000, stoppingToken);
+            // }
         }
     }
 }
