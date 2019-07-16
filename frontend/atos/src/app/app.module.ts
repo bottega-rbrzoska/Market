@@ -16,6 +16,9 @@ import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
     TestComponent,
     TestChildComponent,
     TestPipe,
-    ProductFormComponent
+    ProductFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [TestService, ProductsService],
+  providers: [TestService, ProductsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

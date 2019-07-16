@@ -1,0 +1,8 @@
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+
+  <form class="card" [formGroup]="loginForm" (submit)="login()">
+    Email: <input class="form-control" formControlName="email">
+    Password: <input class="form-control" type="password" formControlName="password">
+      <button class="btn btn-primary">Login</button>
+  </form>
+</div>
