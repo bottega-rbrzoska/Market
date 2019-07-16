@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './models/product';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ProductsService {
@@ -9,6 +10,16 @@ export class ProductsService {
     { id: '3', name: 'Prod 3', category: 'Cat2', price: 91.99 },
     { id: '3', name: 'Prod 3', category: 'Cat2', price: 9.99 }
   ];
+  private productsSubj = new BehaviorSubject<Product[]>([]);
+
+  get products$() {
+    return this.productsSubj.asObservable();
+  }
+
+  filterProducts(name: string = '') {
+    const filteredProducts = this.products.filter(p => p.name.includes(name));
+    this.productsSubj.next(filteredProducts);
+  }
 
   constructor() { }
 
