@@ -31,5 +31,9 @@ export class ProductsService {
     return this.http.post('/api/products', {description: 'Descr', ...product});
   }
 
+  deleteProduct(id) {
+    return this.http.delete('/api/products');
+  }
+
   constructor(private http: HttpClient) { }
 }

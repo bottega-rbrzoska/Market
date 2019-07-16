@@ -13,12 +13,13 @@ import { TestChildComponent } from './test-child/test-child.component';
 import { TestPipe } from './test.pipe';
 import { TestService } from './test.service';
 import { ProductsService } from './products.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { AuthGuard } from './auth.guard';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [TestService, ProductsService, AuthService, AuthGuard],
+  providers: [
+    { provide: TestService, useClass: TestService},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+    , ProductsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

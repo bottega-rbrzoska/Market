@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductsService } from '../products.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +12,7 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
 
+  @ViewChild(ProductFormComponent, { static: true }) productForm: ProductFormComponent;
   formControl: FormControl;
   formGroup: FormGroup;
   formArray: FormArray;
@@ -18,6 +20,9 @@ export class ProductsComponent implements OnInit {
   categories = ['', 'Phones', 'Tablets', 'Notebooks'];
   products$: Observable<Product[]>;
 
+  ngAfterViewInit() {
+    console.log(this.productForm)
+  }
   constructor(private productsService: ProductsService) {
     this.products$ = productsService.products$;
     productsService.refreshProducts();
@@ -50,6 +55,7 @@ export class ProductsComponent implements OnInit {
 
   handleSave(product) {
     this.productsService.save(product).subscribe(() => {
+      this.productForm.formGroup.reset();
       this.filterProducts(this.formGroup.get('categorySelect').value);
     });
   }
