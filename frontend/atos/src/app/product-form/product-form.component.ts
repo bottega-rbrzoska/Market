@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ProductFormComponent implements OnInit {
 
+  @Output() saveForm = new EventEmitter();
   formGroup: FormGroup;
   categories = ['', 'Phones', 'Tablets', 'Notebooks'];
 
@@ -24,8 +25,8 @@ export class ProductFormComponent implements OnInit {
 
   save() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value);
-      this.formGroup.reset();
+      this.saveForm.emit(this.formGroup.value);
+      // this.formGroup.reset();
     }
   }
 

@@ -18,12 +18,17 @@ export class ProductsService {
       p => this.productsSubj.next(p)
     )
   }
+
   filterAndRefreshProducts(category = '') {
     this.http.get<Product[]>('/api/products', {
       params: { category }
     }).subscribe(
       p => this.productsSubj.next(p)
     );
+  }
+
+  save(product) {
+    return this.http.post('/api/products', {description: 'Descr', ...product});
   }
 
   constructor(private http: HttpClient) { }

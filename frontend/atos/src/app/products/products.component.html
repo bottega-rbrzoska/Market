@@ -38,6 +38,6 @@ Filter by category:
     </tr>
   </tbody>
 </table>
-<app-product-form></app-product-form>
+<app-product-form (saveForm)="handleSave($event)"></app-product-form>
 
 <code>{{products$ | async | json}}</code>

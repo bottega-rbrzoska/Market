@@ -47,4 +47,10 @@ export class ProductsComponent implements OnInit {
   filterProducts(category) {
     this.productsService.filterAndRefreshProducts(category);
   }
+
+  handleSave(product) {
+    this.productsService.save(product).subscribe(() => {
+      this.filterProducts(this.formGroup.get('categorySelect').value);
+    });
+  }
 }
