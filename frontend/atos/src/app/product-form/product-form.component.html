@@ -1,0 +1,10 @@
+<form [formGroup]="formGroup">
+    Name: <input class="form-control" formControlName="name">
+    Category: <select class="form-control" formControlName="category">
+        <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+      </select>
+    Price: <input type="number" class="form-control" formControlName="price">
+<button type="button"
+(click)="save()"
+class="btn btn-danger">Save</button>
+  </form>

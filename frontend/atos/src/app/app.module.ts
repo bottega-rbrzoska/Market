@@ -15,6 +15,7 @@ import { TestService } from './test.service';
 import { ProductsService } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CounterComponent,
     TestComponent,
     TestChildComponent,
-    TestPipe
+    TestPipe,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
