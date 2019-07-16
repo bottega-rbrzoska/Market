@@ -8,27 +8,18 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
 
-  products: Product[] = [];
   subscription: Subscription;
+  categories = ['', 'Phones', 'Tablets', 'Notebooks'];
   products$: Observable<Product[]>;
 
   constructor(private productsService: ProductsService) {
-    this.products = productsService.getProducts();
-
     this.products$ = productsService.products$;
-    this.subscription = this.products$.subscribe(() => console.log('new products'))
-    productsService.filterProducts();
-
-    //productsService.products$.subscribe(p => this.products = p)
+    productsService.refreshProducts();
   }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   doubleVal(val) {
@@ -36,9 +27,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     return val * 2;
   }
 
-  filterProducts(name) {
-
-    this.productsService.filterProducts(name);
-    this.products = this.productsService.getProducts(name);
+  filterProducts(category) {
+    this.productsService.filterAndRefreshProducts(category);
   }
 }

@@ -1,5 +1,8 @@
-Search by name: <input type="text" #search
-(input)="filterProducts(search.value)">
+Filter by category: <select type="text" #categorySelect
+(change)="filterProducts(categorySelect.value)">
+<option *ngFor="let cat of categories"
+[value]="cat">{{cat}}</option>
+</select>
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +14,7 @@ Search by name: <input type="text" #search
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products$ | async">
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.category}}</td>
